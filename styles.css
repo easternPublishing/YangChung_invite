@@ -667,3 +667,30 @@ body {
     /* 금빛 계열 */
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+.copy-btn {
+    margin-left: .6rem;
+    padding: .25rem .65rem;
+    font-size: .85rem;
+    border: 1px solid #bfae63;
+    background: rgba(255, 255, 255, .9);
+    color: #53450a;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.copy-btn:hover {
+    background: #bfae63;
+    color: #fff;
+}
+
+.account-line {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+#account-text {
+    user-select: text;
+}

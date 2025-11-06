@@ -163,6 +163,16 @@
 
           <h3>문의</h3>
           <p>박세현 <a href="tel:01094121170">010-9412-1170</a></p>
+
+          <!-- 후원금 입금 계좌 -->
+          <h3>후원금 입금 계좌</h3>
+          <p class="account-line">
+            <span id="account-text">카카오뱅크 7979-60-81740 <br>양정월계수합창단 이용욱</span>
+            <button type="button" class="copy-btn" data-target="#account-text">계좌 복사</button>
+          </p>
+          <h3>문의</h3>
+          <p>이용욱(양정 70회) <a href="tel:01023305399">010-2330-5399</a></p>
+
         </div>
       </div>
     </section>
@@ -191,6 +201,40 @@
       <p class="footer__copy">© 2025 YangChung Laurel Choir. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- body 끝나기 직전 또는 기존 스크립트 위치 -->
+  <script>
+    (function () {
+      const btn = document.querySelector('.copy-btn');
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const targetSel = btn.getAttribute('data-target') || '#account-text';
+        const el = document.querySelector(targetSel);
+        if (!el) return;
+
+        const text = (el.innerText || el.textContent || '').trim();
+        if (!text) return;
+
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = '복사 완료!';
+          setTimeout(() => (btn.textContent = '계좌 복사'), 1400);
+        }).catch(() => {
+          // iOS 사파리 등 호환 대체
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          btn.textContent = '복사 완료!';
+          setTimeout(() => (btn.textContent = '계좌 복사'), 1400);
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
